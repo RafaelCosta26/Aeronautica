@@ -4,9 +4,124 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Aeronautica"
+        Loaded="Window_Loaded"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
 
-    </Grid>
+    <DockPanel>
+
+        <!-- Barra superior com botões -->
+        <Border Background="#1E3A8A"
+                DockPanel.Dock="Top"
+                Height="40">
+            <UniformGrid Columns="6">
+                <Button Content="Aviões"
+                        Click="Avioes_Click"
+                        Margin="10,0,1,10" />
+                <Button Content="Aeroportos"
+                        Click="Aeroportos_Click"
+                        Margin="0,0,0,10" />
+                <Button Content="Voos"
+                        Click="Voos_Click"
+                        Margin="0,0,0,10" />
+                <Button Content="Passageiros"
+                        Click="Passageiros_Click"
+                        Margin="0,0,0,10" />
+                <Button Content="Bilhetes"
+                        Click="Bilhetes_Click"
+                        Margin="-4,0,5,10" />
+                <Button Content="Sobre"
+                        Click="Sobre_Click"
+                        Margin="0,0,10,10" />
+            </UniformGrid>
+        </Border>
+
+        <!-- Conteúdo da página -->
+        <Grid Name="MainContent"
+              Background="White">
+            <!-- Barra de progresso -->
+            <ProgressBar x:Name="BarraProgresso"
+                         Height="10"
+                         VerticalAlignment="Top"
+                         Margin="10"
+                         Minimum="0"
+                         Maximum="100"
+                         IsIndeterminate="True"
+                         Visibility="Collapsed"
+                         Foreground="#1E3A8A" />
+
+            <!-- Conteúdo principal abaixo da barra de progresso -->
+            <Grid Margin="10,25,10,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!-- Primeira Grid -->
+                <Grid Grid.Row="0"
+                      Background="#E0F0FF"
+                      Margin="0,0,0,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <DockPanel Grid.Row="0"
+                               Margin="10">
+                        <Label Content="Voos"
+                               FontWeight="Bold"
+                               FontSize="14"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left" />
+                        <Button Content="Informação"
+                                Width="100"
+                                Height="25"
+                                HorizontalAlignment="Right"
+                                DockPanel.Dock="Right"
+                                Click="InformacaoVoos_Click" />
+                    </DockPanel>
+
+                    <DataGrid x:Name="TabelaVoos"
+                              Grid.Row="1"
+                              Margin="10"
+                              AutoGenerateColumns="True"
+                              ColumnWidth="*"
+                              IsReadOnly="True" />
+                </Grid>
+
+                <!-- Segunda Grid -->
+                <Grid Grid.Row="1"
+                      Background="#F0F8FF">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <DockPanel Grid.Row="0"
+                               Margin="10">
+                        <Label Content="Avioes"
+                               FontWeight="Bold"
+                               FontSize="14"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left" />
+                        <Button Content="Informação"
+                                Width="100"
+                                Height="25"
+                                HorizontalAlignment="Right"
+                                DockPanel.Dock="Right"
+                                Click="InformacaoAeroportos_Click" />
+                    </DockPanel>
+
+                    <DataGrid x:Name="TabelaAvioes"
+                              Grid.Row="1"
+                              Margin="10"
+                              AutoGenerateColumns="True"
+                              ColumnWidth="*"
+                              IsReadOnly="True" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </DockPanel>
 </Window>

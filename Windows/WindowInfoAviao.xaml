@@ -1,0 +1,80 @@
+﻿<Window x:Class="Aeronautica.Windows.WindowInfoAviao"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Aeronautica.Windows"
+        mc:Ignorable="d"
+        Title="Editar Avião"
+        Height="300"
+        Width="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F8FF"
+        Closing="Window_Closing">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- ProgressBar -->
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- ProgressBar -->
+        <ProgressBar x:Name="BarraProgresso"
+                     Grid.Row="0"
+                     Height="10"
+                     Margin="0 0 0 10"
+                     IsIndeterminate="True"
+                     Visibility="Collapsed"
+                     Foreground="#1E3A8A" />
+
+        <!-- Nome -->
+        <StackPanel Margin="0 0 0 10"
+                    Grid.Row="1">
+            <TextBlock Text="Nome:"
+                       FontWeight="Bold" />
+            <TextBox x:Name="NomeTextBox" />
+        </StackPanel>
+
+        <!-- Modelo -->
+        <StackPanel Margin="0 0 0 10"
+                    Grid.Row="2">
+            <TextBlock Text="Modelo:"
+                       FontWeight="Bold" />
+            <TextBox x:Name="ModeloTextBox" />
+        </StackPanel>
+
+        <!-- Estado -->
+        <StackPanel Margin="0 0 0 10"
+                    Grid.Row="3">
+            <TextBlock Text="Estado:"
+                       FontWeight="Bold" />
+            <ComboBox x:Name="EstadoComboBox"
+                      SelectedIndex="0">
+                <ComboBoxItem Content="Disponível" />
+                <ComboBoxItem Content="Indisponível" />
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Botões -->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Grid.Row="4"
+                    Margin="0 10">
+            <Button Content="Guardar"
+                    Width="100"
+                    Margin="5"
+                    Click="Guardar_Click"
+                    Background="#1E3A8A"
+                    Foreground="White" />
+            <Button Content="Apagar"
+                    Width="100"
+                    Margin="5"
+                    Click="Apagar_Click"
+                    Background="#DC2626"
+                    Foreground="White" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,126 @@
+﻿<Window x:Class="Aeronautica.Windows.WindowBilhetes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WindowBilhetes"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Background="#F0F8FF">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- ProgressBar -->
+            <RowDefinition Height="Auto" />
+            <!-- Título -->
+            <RowDefinition Height="*" />
+            <!-- DataGrid -->
+            <RowDefinition Height="Auto" />
+            <!-- Controles -->
+        </Grid.RowDefinitions>
+
+        <!-- Barra de Progresso -->
+        <ProgressBar x:Name="BarraProgresso"
+                     Grid.Row="0"
+                     Height="10"
+                     Margin="0 0 0 10"
+                     IsIndeterminate="True"
+                     Visibility="Collapsed"
+                     Foreground="#1E3A8A"
+                     VerticalAlignment="Top" />
+
+        <!-- Título -->
+        <TextBlock Grid.Row="1"
+                   Text="Gestão de Bilhetes"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="#1E3A8A"
+                   Margin="0 0 0 20" />
+
+        <!-- Tabela -->
+        <DataGrid x:Name="TabelaBilhetes"
+                  Grid.Row="2"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  Margin="0 0 0 20">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID"
+                                    Binding="{Binding IdBilhete}"
+                                    Width="Auto" />
+                <DataGridTextColumn Header="Passageiro"
+                                    Binding="{Binding NomePassageiro}"
+                                    Width="*" />
+                <DataGridTextColumn Header="Lugar"
+                                    Binding="{Binding LugarDescricao}"
+                                    Width="*" />
+                <DataGridTextColumn Header="Preço"
+                                    Binding="{Binding Preco}"
+                                    Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Controles -->
+        <StackPanel Grid.Row="3"
+                    Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    Margin="0 10 0 0">
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 10">
+                <TextBlock Text="Voo: "
+                           FontWeight="Bold"
+                           Margin="0 0 5 0" />
+                <ComboBox x:Name="ComboVoo"
+                          Width="200"
+                          SelectionChanged="ComboVoo_SelectionChanged"
+                          DisplayMemberPath="Descricao"
+                          SelectedValuePath="IdVoo" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 10">
+                <TextBlock Text="Lugar: "
+                           FontWeight="Bold"
+                           Margin="0 0 5 0" />
+                <ComboBox x:Name="ComboLugar"
+                          Width="200"
+                          DisplayMemberPath="Descricao"
+                          SelectedValuePath="IdLugarVoo" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 10">
+                <TextBlock Text="Passageiro (opcional): "
+                           FontWeight="Bold"
+                           Margin="0 0 5 0" />
+                <ComboBox x:Name="ComboPassageiro"
+                          Width="200"
+                          DisplayMemberPath="NomeCompleto"
+                          SelectedValuePath="IdPassageiro" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button Content="Criar"
+                        Width="150"
+                        Margin="5"
+                        Background="#1E3A8A"
+                        Foreground="White"
+                        Click="Guardar_Click" />
+                <Button Content="Editar"
+                        Width="150"
+                        Margin="5"
+                        Background="#1E3A8A"
+                        Foreground="White"
+                        Click="Editar_Click" />
+                <Button Content="Apagar"
+                        Width="150"
+                        Margin="5"
+                        Background="#DC2626"
+                        Foreground="White"
+                        Click="Apagar_Click" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

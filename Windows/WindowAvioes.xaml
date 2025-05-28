@@ -1,0 +1,108 @@
+﻿<Window x:Class="Aeronautica.WindowAvioes"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Aeronautica"
+        mc:Ignorable="d"
+        Title="WindowAvioes"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Background="#F0F8FF">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="223*" />
+                <ColumnDefinition Width="217*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Barra de progresso no topo -->
+            <ProgressBar x:Name="BarraProgresso"
+                         Grid.Row="0"
+                         Height="10"
+                         Margin="10,10,10,0"
+                         IsIndeterminate="True"
+                         Visibility="Collapsed"
+                         Foreground="#1E3A8A"
+                         VerticalAlignment="Top"
+                         Grid.ColumnSpan="2"
+                         Grid.RowSpan="2" />
+
+            <Grid Grid.Row="1"
+                  Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="1"
+                            Margin="20"
+                            Width="400"
+                            VerticalAlignment="Top">
+
+                    <TextBlock Text="Criar Avião"
+                               FontSize="24"
+                               FontWeight="Bold"
+                               Foreground="#1E3A8A"
+                               Margin="0 0 0 20" />
+
+                    <TextBlock Text="Nome:"
+                               FontSize="16"
+                               FontWeight="Bold" />
+                    <TextBox x:Name="NomeTextBox"
+                             Margin="0 0 0 15" />
+
+                    <TextBlock Text="Modelo:"
+                               FontSize="16"
+                               FontWeight="Bold" />
+                    <TextBox x:Name="ModeloTextBox"
+                             Margin="0 0 0 15" />
+
+                    <TextBlock Text="Estado:"
+                               FontSize="16"
+                               FontWeight="Bold" />
+                    <ComboBox x:Name="EstadoComboBox"
+                              Margin="0 0 0 15"
+                              SelectedIndex="0">
+                        <ComboBoxItem Content="Disponível" />
+                        <ComboBoxItem Content="Indisponível" />
+                    </ComboBox>
+
+                    <TextBlock Text="Nº Lugares Económicos:"
+                               FontSize="16"
+                               FontWeight="Bold" />
+                    <xctk:IntegerUpDown x:Name="LugaresEconomicosTextBox"
+                                        Margin="0 0 0 15"
+                                        Minimum="0"
+                                        Maximum="999"
+                                        Width="150"
+                                        HorizontalAlignment="Left" />
+
+                    <TextBlock Text="Nº Lugares Executivos:"
+                               FontSize="16"
+                               FontWeight="Bold" />
+                    <xctk:IntegerUpDown x:Name="LugaresExecutivosTextBox"
+                                        Margin="0 0 0 20"
+                                        Minimum="0"
+                                        Maximum="999"
+                                        Width="150"
+                                        HorizontalAlignment="Left" />
+
+                    <Button Content="Criar Avião"
+                            Width="150"
+                            HorizontalAlignment="Center"
+                            Background="#1E3A8A"
+                            Foreground="White"
+                            Click="CriarAviao_ClickAsync" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Window>
